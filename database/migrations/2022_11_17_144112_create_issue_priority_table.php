@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIssuePriotityTable extends Migration
+class CreateIssuePriorityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateIssuePriotityTable extends Migration
      */
     public function up()
     {
-        Schema::create('issue_priotity', function (Blueprint $table) {
+        Schema::create('issue_priority', function (Blueprint $table) {
             $table->id();
             $table->foreignId('issue_id');
-            $table->foreignId('priotity_id');
+            $table->foreignId('priority_id');
 //            $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateIssuePriotityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('issue_priotity');
+        Schema::dropIfExists('issue_priority');
     }
 }
