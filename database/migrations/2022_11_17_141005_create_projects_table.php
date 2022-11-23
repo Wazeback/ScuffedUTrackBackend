@@ -15,6 +15,7 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('sprints_id');
             $table->string('name');
             $table->timestamp('start');
             $table->timestamp('end');

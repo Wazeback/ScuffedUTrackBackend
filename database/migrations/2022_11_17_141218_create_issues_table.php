@@ -15,6 +15,8 @@ class CreateIssuesTable extends Migration
     {
         Schema::create('issues', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('sprint_id');
             $table->string('title');
             $table->string('description');
             $table->integer('state');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Issue;
 use App\Http\Requests\StoreIssueRequest;
 use App\Http\Requests\UpdateIssueRequest;
+use App\Models\Project;
+use App\Models\Sprint;
 
 class IssueController extends Controller
 {
@@ -15,7 +17,24 @@ class IssueController extends Controller
      */
     public function index()
     {
-        //
+
+        $sprintName = "sprint 1";
+        $projectName = "project 1";
+
+        return dd(
+//            Issue::all()->where('sprint_id', 1),
+//             Sprint::all()->where('name', $sprintName),
+            Sprint::where('name', $sprintName)->find(1)->issue()->get(),
+            Issue::where('sprint_id', 1)->find(1)->sprint()->get(),
+            Project::where('name', $projectName)->find(1)->sprint()->get()
+        );
+    }
+
+    /**
+/            Sprint::find(1)->issue()->get()
+//        Sprint::find(1)->with('issue')
+        );
+
     }
 
     /**
@@ -25,7 +44,7 @@ class IssueController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

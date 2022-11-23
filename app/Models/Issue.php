@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Issue extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+    ];
+
+   public function sprint()
+   {
+       return $this->belongsTo(Sprint::class);
+   }
+
+
 }
