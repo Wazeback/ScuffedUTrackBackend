@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use App\Models\Issue;
 use App\Http\Requests\StoreIssueRequest;
 use App\Http\Requests\UpdateIssueRequest;
@@ -13,27 +14,33 @@ class IssueController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
 
         $sprintName = "sprint 1";
         $projectName = "project 1";
+        $groupName = "group 1";
+        $issues = Sprint::with('issues.priority', 'issues.subject')->where('name', 'sprint 1')->get();
+//        $issues->getRelations();  'issues.priority'
 
-        return dd(
-//            Issue::all()->where('sprint_id', 1),
-//             Sprint::all()->where('name', $sprintName),
-            Sprint::where('name', $sprintName)->find(1)->issue()->get(),
-            Issue::where('sprint_id', 1)->find(1)->sprint()->get(),
-            Project::where('name', $projectName)->find(1)->sprint()->get()
-        );
-    }
 
-    /**
-/            Sprint::find(1)->issue()->get()
-//        Sprint::find(1)->with('issue')
-        );
+//        return dd(
+//
+//            Sprint::where('name', $sprintName)->find(1)->issue()->get(),
+////            Issue::where('sprint_id', 1)->find(1)->sprint()->get(),
+//            $allThing->sprint(),
+//            Project::where('name', $projectName)->find(1)->sprint()->get(),
+//            Group::where('group', $groupName)->find(1)->users()->get(),
+//            Issue::where('sprint_id', 1)->find(1)->priority()->get(),
+//
+//        );
+
+        return Response()->json([
+                'status' => 'true',
+                'sprint' => $issues,
+            ]);
 
     }
 

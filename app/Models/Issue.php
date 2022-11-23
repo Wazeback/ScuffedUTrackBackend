@@ -17,5 +17,17 @@ class Issue extends Model
        return $this->belongsTo(Sprint::class);
    }
 
+   public function priority()
+   {
+       return $this->belongsTo(Priority::class);
+
+   }
+
+   public function subject()
+   {
+       return $this->belongsTo(Subject::class);
+
+   }
+
 
 }

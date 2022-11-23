@@ -10,5 +10,9 @@ class Subject extends Model
     use HasFactory;
 
 
+    public function issue()
+    {
+        return $this->hasOne(Issue::class);
+    }
 
 }

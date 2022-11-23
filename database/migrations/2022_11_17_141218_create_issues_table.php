@@ -17,6 +17,8 @@ class CreateIssuesTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('sprint_id');
+            $table->foreignId('priority_id');
+            $table->foreignId('subject_id');
             $table->string('title');
             $table->string('description');
             $table->integer('state');
