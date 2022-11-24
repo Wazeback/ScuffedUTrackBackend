@@ -19,4 +19,3 @@ Route::get('/', function () {
 
 //Route::resource('cards', '\App\Http\Controllers\CardController')->names('cards');
 
-Route::resource('/issues', '\App\Http\Controllers\IssueController')->names('issues');
