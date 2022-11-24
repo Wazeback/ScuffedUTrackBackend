@@ -18,4 +18,5 @@ Route::get('/', function () {
 });
 
 
-Route::resource('/issues', '\App\Http\Controllers\IssueController')->names('issues');
+//Route::resource('/issues', '\App\Http\Controllers\IssueController')->names('issues');
+//Route::resource('/sprint', '\App\Http\Controllers\ApiPostController')->names('sprint')->only('sprint1');

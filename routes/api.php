@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResource('/issues', '\App\Http\Controllers\IssueController')->names('issues')->only('index');
+//Route::apiResource('/issues', '\App\Http\Controllers\IssueController')->names('issues')->only('index');
+Route::get('/sprint', ['\App\Http\Controllers\ApiPostController', 'sprint']);
+Route::get('/project', ['\App\Http\Controllers\ApiPostController', 'project']);
