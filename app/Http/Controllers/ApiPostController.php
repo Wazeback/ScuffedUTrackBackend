@@ -23,6 +23,7 @@ class ApiPostController extends Controller
         with('issues.priority', 'issues.subject')
             ->where('name', $sprintName)->get();
 
+        
         return Response()->json([
             'status' => 'true',
             'sprint' => $sprint
@@ -42,6 +43,7 @@ class ApiPostController extends Controller
         $project = Project::
         with('sprint', 'sprint.issues', 'sprint.issues.priority', 'sprint.issues.subject')
             ->where('name', $periodName)->get();
+
 
         return Response()->json([
             'status' => 'true',
