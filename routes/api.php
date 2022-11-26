@@ -23,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //Route::apiResource('/issues', '\App\Http\Controllers\IssueController')->names('issues')->only('index');
 Route::get('/sprint', ['\App\Http\Controllers\ApiPostController', 'sprint']);
 Route::get('/project', ['\App\Http\Controllers\ApiPostController', 'project']);
+Route::get('/group', ['App\Http\Controllers\ApiPostController', 'group']);
