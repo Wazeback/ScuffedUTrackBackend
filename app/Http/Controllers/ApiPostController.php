@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Sprint;
 use App\Models\User;
+use App\Models\Group;
+use App\Models\Year;
 
 
 class ApiPostController extends Controller
 {
 
 //    funtion sprint() is called in api.php.
-//    Collects a sprint model and its relations (done manualy to simulate recursion)
-//    on a given id then returns
+//    Collects a sprint model and its relations (done recursive)
+//    on a given id, then returns
 //    a status and its collection formatted in json
 
     public function sprint() {
@@ -21,8 +23,8 @@ class ApiPostController extends Controller
         $sprintId= "1";
 
         $sprint = Sprint::
-        with('issues.priority', 'issues.subject')
-            ->where('id', $sprintId)
+            where('id', $sprintId)
+            ->with('issues.priority', 'issues.subject')
             ->get();
 
         return Response()->json([
@@ -32,7 +34,7 @@ class ApiPostController extends Controller
     }
 
 //    funtion project() is called in api.php.
-//    Collects a project model and its relations (done manualy to simulate recursion)
+//    Collects a project model and its relations,
 //    on a given id then returns
 //    a status and its collection formatted in json
 
@@ -41,8 +43,8 @@ class ApiPostController extends Controller
         $periodID = "1";
 
         $project = Project::
-        with('sprint', 'sprint.issues', 'sprint.issues.priority', 'sprint.issues.subject')
-            ->where('id', $periodID)
+            where('id', $periodID)
+            ->with('sprint.issues.priority', 'sprint.issues.subject')
             ->get();
 
         return Response()->json([
@@ -52,29 +54,45 @@ class ApiPostController extends Controller
     }
 
 //    funtion group() is called in api.php.
-//    Collects User models and group model on a given id
+//    Collects group model on a given id with relations,
 //    then returns a status and its collection formatted in json
 
     public function group() {
 
         $groupID = "1";
 
-        $users = User::
-            where('group_id', $groupID)
+        $group = Group::
+            where('id', $groupID)
+            ->with('users')
             ->get();
 
-        $group = User::
-            where('group_id', $groupID)->with('group')
-            ->first()
-            ->group;
+        return Response()->json([
+            'status' => 'true',
+            'group' => $group
+        ]);
+
+    }
+
+//    funtion year() is called in api.php.
+//    Collects Year model on a given id with relations (done recursive),
+//    then returns a status and its collection formatted in json
+
+    public function year() {
+
+        $yearID = "1";
+
+        $year = Year::
+            where('id', $yearID)
+            ->with('groups.users')
+            ->get();
 
 
         return Response()->json([
             'status' => 'true',
-            'group' => $group,
-            'users' => $users
+            'year' =>  $year
         ]);
 
     }
+
 
 }

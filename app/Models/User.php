@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Group::class);
     }
+
+    public function year()
+    {
+        return $this->belongsTo(Year::class);
+    }
 }

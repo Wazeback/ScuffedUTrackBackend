@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Group extends Model
+class Year extends Model
 {
     use HasFactory;
 
@@ -14,5 +14,10 @@ class Group extends Model
         return $this->hasmany(User::class);
     }
 
+
+    public function groups()
+    {
+        return $this->hasmany(Group::class);
+    }
 
 }

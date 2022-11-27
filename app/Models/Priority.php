@@ -9,7 +9,7 @@ class Priority extends Model
 {
     use HasFactory;
 
-    public function issue()
+    public function issues()
     {
         return $this->hasMany(Issue::class);
     }

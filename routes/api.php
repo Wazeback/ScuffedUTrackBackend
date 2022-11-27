@@ -24,3 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/sprint', ['\App\Http\Controllers\ApiPostController', 'sprint']);
 Route::get('/project', ['\App\Http\Controllers\ApiPostController', 'project']);
 Route::get('/group', ['App\Http\Controllers\ApiPostController', 'group']);
+Route::get('/year', ['App\Http\Controllers\ApiPostController', 'year']);
+
