@@ -56,6 +56,7 @@ class IssueTableSeeder extends Seeder
                 'created_at' => $this->faker->dateTimeBetween('now', ),
                 'updated_at' => $this->faker->dateTimeBetween('now',),
                 'duedate' => $this->faker->dateTimeBetween('now', ),
+                'status_id' => $number,
                 'estimation' => '2',
                 'spenttime' => '4h',
             ]);
