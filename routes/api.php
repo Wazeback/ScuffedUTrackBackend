@@ -19,10 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-//Route::apiResource('/issues', '\App\Http\Controllers\IssueController')->names('issues')->only('index');
-Route::get('/sprint', ['\App\Http\Controllers\ApiPostController', 'sprint']);
-Route::get('/project', ['\App\Http\Controllers\ApiPostController', 'project']);
-Route::get('/group', ['App\Http\Controllers\ApiPostController', 'group']);
-Route::get('/year', ['App\Http\Controllers\ApiPostController', 'year']);
+Route::get('/sprint', ['\App\Http\Controllers\ApiControllers\SprintController', 'sprint']);
+Route::get('/project', ['\App\Http\Controllers\ApiControllers\ProjectController', 'project']);
+Route::get('/group', ['App\Http\Controllers\ApiControllers\GroupController', 'group']);
+Route::get('/year', ['App\Http\Controllers\ApiControllers\YearController', 'year']);
 
