@@ -9,6 +9,11 @@ class Sprint extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'project_id',
+        ];
+
     public function issues()
     {
         return $this->hasMany(Issue::class);

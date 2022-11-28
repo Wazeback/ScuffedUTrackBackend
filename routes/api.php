@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,4 +22,6 @@ Route::get('/sprint', ['\App\Http\Controllers\ApiControllers\SprintController', 
 Route::get('/project', ['\App\Http\Controllers\ApiControllers\ProjectController', 'project']);
 Route::get('/group', ['App\Http\Controllers\ApiControllers\GroupController', 'group']);
 Route::get('/year', ['App\Http\Controllers\ApiControllers\YearController', 'year']);
+
+Route::post('/sprintCreate', ['\App\Http\Controllers\ApiControllers\SprintController', 'store']);
 
