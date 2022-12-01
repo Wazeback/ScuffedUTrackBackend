@@ -28,6 +28,8 @@ Route::get('/sprints', [SprintController::class, 'sprints']);
 Route::get('/project', [ProjectController::class, 'project']);
 Route::get('/group', [GroupController::class, 'group']);
 Route::get('/year', [YearController::class, 'year']);
+Route::get('/projects', [ProjectController::class, 'projects']);
 
-Route::post('/sprintCreate', [SprintController::class, 'create']);
+
+Route::post('/sprint/create', [SprintController::class, 'create']);
 
