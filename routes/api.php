@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\ApiControllers\SprintController;
+use App\Http\Controllers\ApiControllers\ProjectController;
+use App\Http\Controllers\ApiControllers\GroupController;
+use App\Http\Controllers\ApiControllers\YearController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +23,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/sprint', ['\App\Http\Controllers\ApiControllers\SprintController', 'sprint']);
-Route::get('/project', ['\App\Http\Controllers\ApiControllers\ProjectController', 'project']);
-Route::get('/group', ['App\Http\Controllers\ApiControllers\GroupController', 'group']);
-Route::get('/year', ['App\Http\Controllers\ApiControllers\YearController', 'year']);
+Route::get('/sprint', [SprintController::class, 'sprint']);
+Route::get('/sprints', [SprintController::class, 'sprints']);
+Route::get('/project', [ProjectController::class, 'project']);
+Route::get('/group', [GroupController::class, 'group']);
+Route::get('/year', [YearController::class, 'year']);
 
-Route::post('/sprintCreate', ['\App\Http\Controllers\ApiControllers\SprintController', 'store']);
+Route::post('/sprintCreate', [SprintController::class, 'create']);
 

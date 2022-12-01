@@ -7,7 +7,6 @@ use App\Models\Sprint;
 use Illuminate\Http\Request;
 
 
-
 class SprintController extends Controller
 {
 
@@ -32,17 +31,41 @@ class SprintController extends Controller
         ]);
     }
 
-    /**
-     * Store a new user.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
 
-    public function store(Requests $request) {
+    public function sprints() {
+
+        $groupID = 1;
+
+        $sprints = Sprint::
+            whereRelation('project.group.users', 'group_id', $groupID)
+            ->get();
+
+        return Response()->json([
+            'status' => 'true',
+            'sprint' => $sprints
+        ]);
+}
+
+
+//    function create() creates a new sprint with the request it gets through the api.php.
+//    it will also validate the given request data.
+//    If it's correctly formatted data it will return an error message.
+
+    public function create(Request $request) {
+
+        $validatedData = $request->validate([
+            'name' => 'nullable',
+            'project_id' => 'nullable',
+            'start' => 'nullable',
+            'end' => 'nullable',
+        ]);
+
         $sprint = Sprint::create([
-            'name' => $request->name,
-            'project_id' => $request->project_id,
+            'name' => $validatedData["name"],
+            'project_id' => $validatedData["project_id"],
+            'start' => $validatedData["start"],
+            'end' => $validatedData["end"]
         ]);
     }
+
 }

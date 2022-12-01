@@ -14,5 +14,9 @@ class Group extends Model
         return $this->hasmany(User::class);
     }
 
+    public function Project()
+    {
+        return $this->hasmany(Project::class);
+    }
 
 }

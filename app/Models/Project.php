@@ -9,9 +9,17 @@ class Project extends Model
 {
     use HasFactory;
 
-    public function sprint() {
+    public function sprint()
+    {
         return $this->hasMany(Sprint::class);
     }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+
+
 
 
 

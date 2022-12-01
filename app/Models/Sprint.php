@@ -12,6 +12,8 @@ class Sprint extends Model
     protected $fillable = [
         'name',
         'project_id',
+        'start',
+        'end',
         ];
 
     public function issues()
@@ -22,7 +24,6 @@ class Sprint extends Model
     public function project()
     {
         return $this->belongsTo(Project::class);
-
     }
 
 }
