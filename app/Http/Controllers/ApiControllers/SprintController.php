@@ -66,6 +66,10 @@ class SprintController extends Controller
             'start' => $validatedData["start"],
             'end' => $validatedData["end"]
         ]);
+
+        return Response()->json([
+            "success"
+        ]);
     }
 
 }
