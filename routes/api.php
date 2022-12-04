@@ -19,17 +19,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
 
 Route::get('/sprint', [SprintController::class, 'sprint']);
-Route::get('/sprints', [SprintController::class, 'sprints']);
+Route::get('/sprints', [SprintController::class, 'sprints'])
+;
 Route::get('/project', [ProjectController::class, 'project']);
-Route::get('/group', [GroupController::class, 'group']);
-Route::get('/year', [YearController::class, 'year']);
 Route::get('/projects', [ProjectController::class, 'projects']);
+
+Route::get('/year', [YearController::class, 'year']);
+Route::get('/years', [YearController::class, 'years']);
+
+Route::get('/group', [GroupController::class, 'group']);
+
 
 
 Route::post('/sprint/create', [SprintController::class, 'create']);
+Route::post('/project/create', [ProjectController::class, 'create']);
+
 

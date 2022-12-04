@@ -9,6 +9,13 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'group_id',
+        'start',
+        'end',
+    ];
+
     public function sprint()
     {
         return $this->hasMany(Sprint::class);

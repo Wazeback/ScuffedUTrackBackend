@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ApiControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Year;
+use Illuminate\Http\Request;
 
 class YearController extends Controller
 {
@@ -21,11 +22,41 @@ class YearController extends Controller
             ->with('groups.users')
             ->get();
 
-
         return Response()->json([
             'status' => 'true',
             'year' =>  $year
         ]);
-
     }
+
+
+    public function years() {
+
+        $userID = 1;
+
+        $years = Year::
+        whereRelation('users', 'id', $userID)
+        ->get();
+
+        return Response()->json([
+            'status' => 'true',
+            'years' => $years
+        ]);
+    }
+
+
+    public function create(Request $request) {
+
+        $validatedData = $request->validate([
+            'name' => 'nullable',
+        ]);
+
+        $year = Year::create([
+            'name' => $validatedData["name"],
+        ]);
+
+        return Response()->json([
+            "success"
+        ]);
+    }
+
 }
