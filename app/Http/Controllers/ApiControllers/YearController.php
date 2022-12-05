@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ApiControllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Year;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,20 @@ class YearController extends Controller
         return Response()->json([
             'status' => 'true',
             'years' => $years
+        ]);
+    }
+
+    public function yearUsers() {
+
+        $yearID = 1;
+
+        $yearUsers= User::
+        whereRelation('group', 'year_id', $yearID)
+            ->get();
+
+        return Response()->json([
+            'status' => 'true',
+            'users' => $yearUsers
         ]);
     }
 

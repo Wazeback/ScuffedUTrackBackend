@@ -32,6 +32,7 @@ Route::get('/projects', [ProjectController::class, 'projects']);
 
 Route::get('/year', [YearController::class, 'year']);
 Route::get('/years', [YearController::class, 'years']);
+Route::get('/yearUsers', [YearController::class, 'yearUsers']);
 
 Route::get('/group', [GroupController::class, 'group']);
 
