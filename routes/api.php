@@ -40,5 +40,6 @@ Route::get('/group', [GroupController::class, 'group']);
 
 Route::post('/sprint/create', [SprintController::class, 'create']);
 Route::post('/project/create', [ProjectController::class, 'create']);
+Route::post('/group/create', [GroupController::class, 'create']);
 
 
