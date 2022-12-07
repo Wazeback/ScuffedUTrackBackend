@@ -14,7 +14,7 @@ class Sprint extends Model
         'project_id',
         'start',
         'end',
-        ];
+    ];
 
     public function issues()
     {

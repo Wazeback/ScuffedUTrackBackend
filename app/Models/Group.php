@@ -9,6 +9,11 @@ class Group extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'group',
+        'year_id',
+    ];
+
     public function users()
     {
         return $this->hasmany(User::class);
