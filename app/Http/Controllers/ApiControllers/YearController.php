@@ -35,7 +35,7 @@ class YearController extends Controller
         $userID = 1;
 
         $years = Year::
-        whereRelation('users', 'id', $userID)
+        with('groups.users')
         ->get();
 
         return Response()->json([
