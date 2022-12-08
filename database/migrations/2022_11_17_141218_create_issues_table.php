@@ -22,10 +22,10 @@ class CreateIssuesTable extends Migration
             $table->foreignId('subject_id');
             $table->string('title');
             $table->string('description');
-            $table->integer('state');
+            $table->integer('state')->nullable();
             $table->timestamp('duedate');
             $table->string('estimation');
-            $table->string('spenttime');
+            $table->string('spenttime')->nullable();
             $table->timestamps();
         });
     }
