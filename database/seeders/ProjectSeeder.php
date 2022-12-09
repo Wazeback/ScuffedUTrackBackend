@@ -8,7 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UserSeeder extends Seeder
+class ProjectSeeder extends Seeder
 {
     /**
      * The current Faker instance.
@@ -46,13 +46,14 @@ class UserSeeder extends Seeder
     {
         $number = 1;
 
-        for ($i = 0; $i < 50; $i++) {
-            DB::table('users')->insert([
+        for ($i = 0; $i < 5; $i++) {
+            DB::table('projects')->insert([
                 'name' => $this->faker->word(),
-                'email' => $this->faker->email(),
                 'group_id' => $number,
                 'created_at' => $this->faker->dateTimeBetween('now', ),
                 'updated_at' => $this->faker->dateTimeBetween('now',),
+                'start' => $this->faker->dateTimeBetween('now', ),
+                'end' => $this->faker->dateTimeBetween('now', ),
             ]);
         }
     }

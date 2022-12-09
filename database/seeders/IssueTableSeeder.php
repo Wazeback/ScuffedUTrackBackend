@@ -47,7 +47,7 @@ class IssueTableSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             DB::table('issues')->insert([
                 'title' => $this->faker->word(),
-                'description' => $this->faker->paragraph(3),
+                'description' => $this->faker->paragraph(1),
                 'state' => $number,
                 'user_id' => $number,
                 'sprint_id' => $number,
