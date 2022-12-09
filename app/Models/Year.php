@@ -9,6 +9,10 @@ class Year extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name'
+    ];
+
     public function users()
     {
         return $this->hasmany(User::class);

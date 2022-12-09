@@ -25,8 +25,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/sprint', [SprintController::class, 'sprint']);
-Route::get('/sprints', [SprintController::class, 'sprints'])
-;
+Route::get('/sprints', [SprintController::class, 'sprints']);
+
 Route::get('/project', [ProjectController::class, 'project']);
 Route::get('/projects', [ProjectController::class, 'projects']);
 
@@ -37,9 +37,9 @@ Route::get('/yearUsers', [YearController::class, 'yearUsers']);
 Route::get('/group', [GroupController::class, 'group']);
 
 
-
 Route::post('/sprint/create', [SprintController::class, 'create']);
 Route::post('/project/create', [ProjectController::class, 'create']);
 Route::post('/group/create', [GroupController::class, 'create']);
+Route::post('/year/create', [YearController::class, 'create']);
 
 
