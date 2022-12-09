@@ -10,6 +10,18 @@ class Issue extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
+        'status_id',
+        'sprint_id',
+        'priority_id',
+        'subject_id',
+        'subject_id',
+        'title',
+        'description',
+        'state',
+        'dueDate',
+        'estimation',
+        'spentTime',
     ];
 
    public function sprint()

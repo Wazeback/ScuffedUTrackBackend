@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiControllers\SprintController;
 use App\Http\Controllers\ApiControllers\ProjectController;
 use App\Http\Controllers\ApiControllers\GroupController;
 use App\Http\Controllers\ApiControllers\YearController;
+use App\Http\Controllers\ApiControllers\IssueController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,9 +36,9 @@ Route::get('/years', [YearController::class, 'years']);
 
 Route::get('/group', [GroupController::class, 'group']);
 
-
+Route::get('/allRelationsIssues', [IssueController::class, 'allRelationsIssues']);
 
 Route::post('/sprint/create', [SprintController::class, 'create']);
 Route::post('/project/create', [ProjectController::class, 'create']);
 
-
+Route::post('/issue/create', [IssueController::class, 'create']);
