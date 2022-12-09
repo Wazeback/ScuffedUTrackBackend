@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ApiControllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Issue;
 use App\Models\Sprint;
 use Illuminate\Http\Request;
 
@@ -11,10 +12,10 @@ class SprintController extends Controller
 {
 
 
-//    function sprint() is called in api.php.
+//    Function sprint() is called in api.php.
 //    Collects a sprint model and its relations (done recursive)
 //    on a given id, then returns
-//    a status and its collection formatted in json
+//    a status and its collection formatted in json.
 
     public function sprint() {
 
@@ -48,8 +49,8 @@ class SprintController extends Controller
 }
 
 
-//    function create() creates a new sprint with the request it gets through the api.php.
-//    it will also validate the given request data.
+//    Function create() creates a new sprint with the request it gets through the api.php.
+//    It will also validate the given request data.
 //    If it's incorrectly formatted data it will return an error message.
 
     public function create(Request $request) {
@@ -68,9 +69,32 @@ class SprintController extends Controller
             'end' => $validatedData["end"]
         ]);
 
-        return Response()->json([
-            "success"
-        ]);
+        return Response()->json("success created sprint", $sprint);
+    }
+
+
+
+//    Public function delete() is called in api.php.
+//    This function softDeletes the selected sprint and,
+//    all the related issues then,
+//    returns a success message.
+
+    public function delete($id)
+    {
+
+//        TODO: validate ID so that it can only user the auth()->user->group delete function.
+
+        $sprint = Sprint::
+            find($id)
+            ->delete();
+
+
+        $issues = Issue::
+            where('sprint_id', $id)
+            ->delete();
+
+
+        return response()->json('Successfully Deleted');
     }
 
 }

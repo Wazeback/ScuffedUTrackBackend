@@ -43,3 +43,6 @@ Route::post('/group/create', [GroupController::class, 'create']);
 Route::post('/year/create', [YearController::class, 'create']);
 
 
+Route::delete('sprints/delete/{id}', [SprintController::class, 'delete']);
+
+
