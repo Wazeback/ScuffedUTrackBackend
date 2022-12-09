@@ -17,6 +17,8 @@ class CreateIssueIssueTable extends Migration
             $table->id();
             $table->foreignId('issue_id');
             $table->foreignId('tabbed_issue_id');
+            $table->softDeletes();
+
 //            $table->timestamps();
         });
     }

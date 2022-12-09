@@ -26,6 +26,7 @@ class CreateIssuesTable extends Migration
             $table->timestamp('duedate');
             $table->string('estimation');
             $table->string('spenttime')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
