@@ -44,5 +44,6 @@ Route::post('/year/create', [YearController::class, 'create']);
 
 
 Route::delete('sprints/delete/{id}', [SprintController::class, 'delete']);
+Route::delete('project/delete/{id}', [ProjectController::class, 'delete']);
 
 

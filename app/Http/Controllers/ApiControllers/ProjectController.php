@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ApiControllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Issue;
 use App\Models\Project;
 use App\Models\Sprint;
 use Illuminate\Http\Request;
@@ -77,6 +78,26 @@ class ProjectController extends Controller
         return Response()->json([
             "success"
         ]);
+    }
+
+
+
+    public function delete($id) {
+
+        $project = Project::
+            find($id)
+            ->delete();
+
+        $sprints = Sprint::
+            where('project_id', $id)
+            ->delete();
+
+        $issues = Issue::
+            whereRelation('sprint.project', 'id', $id)
+            ->delete();
+        
+        return response()->json('Successfully Deleted');
+
     }
 
 }
