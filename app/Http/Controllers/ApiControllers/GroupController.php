@@ -44,27 +44,24 @@ class GroupController extends Controller
 
         $userYearID = 1;
 
-        $validatedData = $request->validate([
-            'name' => 'nullable',
-            'user_id' => 'nullable',
-        ]);
+        $validatedData = $request->validate
+            (['name' => 'nullable',
+            'user_id' => 'nullable',]);
 
-        $group = Group::create([
-            'group' => $validatedData["name"],
-            'year_id' => $userYearID
-        ]);
-
+        $group = Group::
+            create
+                (['group' => $validatedData["name"],
+                'year_id' => $userYearID]);
 
 
         foreach($validatedData["user_id"] as $userID) {
-            $user = User::where('id', $userID)
-                ->update(['group_id' => $group->id]);
+            $user = User::
+                where('id', $userID)
+                ->update
+                    (['group_id' => $group->id]);
         }
 
-
-        return Response()->json([
-            "success"
-        ]);
+        return Response()->json(["you have successfully created a new group"]);
 
     }
 }

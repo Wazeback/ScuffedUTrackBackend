@@ -27,4 +27,9 @@ class Group extends Model
         return $this->hasmany(Project::class);
     }
 
+    public function Year()
+    {
+        return $this->belongsTo(Year::class);
+    }
+
 }

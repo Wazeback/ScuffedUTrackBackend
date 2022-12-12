@@ -84,19 +84,21 @@ class ProjectController extends Controller
 
     public function delete($id) {
 
+
+        $issues = Issue::
+        whereRelation('sprint.project', 'id', $id)
+            ->delete();
+
+
+        $sprints = Sprint::
+        where('project_id', $id)
+            ->delete();
+
         $project = Project::
             find($id)
             ->delete();
 
-        $sprints = Sprint::
-            where('project_id', $id)
-            ->delete();
-
-        $issues = Issue::
-            whereRelation('sprint.project', 'id', $id)
-            ->delete();
-        
-        return response()->json('Successfully Deleted');
+        return response()->json("you have deleted your selected project successfully!");
 
     }
 
