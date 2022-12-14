@@ -19,9 +19,9 @@ class YearController extends Controller
 //    Collects Year model on a given id with relations
 //    (done recursive), then
 //    returns a status and its collection formatted in json
-    public function year() {
+    public function year($id) {
 
-        $yearID = "1";
+        $yearID = $id;
 
         $year = Year::
         where('id', $yearID)
@@ -58,9 +58,9 @@ class YearController extends Controller
 //    Collects all User models that are in a year.
 //    It returns:
 //    status and its collection formatted in json
-    public function yearUsers() {
+    public function yearUsers($id) {
 
-        $yearID = 1;
+        $yearID = $id;
 
         $yearUsers= User::
         whereRelation('group', 'year_id', $yearID)
@@ -97,7 +97,7 @@ class YearController extends Controller
     public function update($id, Request $request) {
 
         $validatedData = $request
-            ->validate(['name' => 'nullable',]);
+            ->validate(['name' => 'min:1',]);
 
         $year = Year::
             find($id)

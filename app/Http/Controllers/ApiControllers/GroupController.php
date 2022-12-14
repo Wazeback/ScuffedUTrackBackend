@@ -14,9 +14,9 @@ class GroupController extends Controller
 //    Collects group model on a given id with relations,
 //    then returns a status and its collection formatted in json
 
-    public function group() {
+    public function group($id) {
 
-        $groupID = "1";
+        $groupID = $id;
 
         $group = Group::
         where('id', $groupID)

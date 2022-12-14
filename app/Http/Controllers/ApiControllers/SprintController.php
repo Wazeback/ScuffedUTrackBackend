@@ -15,21 +15,20 @@ class SprintController extends Controller
 //    Function sprint() is called in api.php.
 //    Collects a sprint model and its relations (done recursive)
 //    on a given id, then returns
-//    a status and its collection formatted in json.
+//    a status code and its collection formatted in json.
 
-    public function sprint() {
+    public function sprint($id) {
 
-        $sprintId= "1";
+        $sprintId= $id;
 
         $sprint = Sprint::
-        where('id', $sprintId)
-            ->with('issues.priority', 'issues.subject', 'issues.status')
-            ->get();
+        with('issues.priority', 'issues.subject', 'issues.status')
+        ->find($sprintId);
 
-        return Response()->json([
-            'status' => 'true',
-            'sprint' => $sprint
-        ]);
+        return Response()->json(
+            $sprint,
+            200
+        );
     }
 
 
@@ -44,7 +43,7 @@ class SprintController extends Controller
 
         return Response()->json([
             'status' => 'true',
-            'sprint' => $sprints
+            'sprints' => $sprints
         ]);
 }
 
@@ -70,6 +69,27 @@ class SprintController extends Controller
         ]);
 
         return Response()->json("success created sprint", $sprint);
+    }
+
+//    function update() is called in api.php.
+//    update() updates a Sprint Model on a given id
+//    and updates with the validated table data from the request.
+//    then returns a success message and status
+    public function update($id, Request $request) {
+
+        $validatedData = $request
+            ->validate([
+                'name' => 'min:1',
+                'project_id' => 'required']);
+
+        $sprint = Sprint::
+        find($id)
+            ->update([
+                'name' => $validatedData["name"],
+                'project_id' => $validatedData["project_id"]]);
+
+        return Response()->json("you have successfully updated your year information!", 200);
+
     }
 
 

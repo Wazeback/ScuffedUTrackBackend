@@ -15,9 +15,9 @@ class ProjectController extends Controller
 //    on a given id then returns
 //    a status and its collection formatted in json.
 
-    public function project() {
+    public function project($id) {
 
-        $periodID = "1";
+        $periodID = $id;
 
         $project = Project::
         where('id', $periodID)
@@ -59,7 +59,7 @@ class ProjectController extends Controller
     public function create(Request $request) {
 
 
-        //auth()->user->group_id
+        //TODO: auth()->user->group_id
         $userGroupId = 1;
 
         $validatedData = $request->validate([
