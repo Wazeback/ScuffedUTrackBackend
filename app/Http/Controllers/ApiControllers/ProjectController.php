@@ -42,8 +42,9 @@ class ProjectController extends Controller
         $groupID = 1;
 
         $projects = Project::
-        whereRelation('group.users', 'group_id', $groupID)
-       ->get();
+            whereRelation('group.users', 'group_id', $groupID)
+            ->with('sprint')
+            ->get();
 
         return Response()->json([
             'status' => 'true',
