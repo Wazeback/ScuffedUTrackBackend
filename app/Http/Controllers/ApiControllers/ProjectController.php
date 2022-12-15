@@ -46,10 +46,10 @@ class ProjectController extends Controller
             ->with('sprint')
             ->get();
 
-        return Response()->json([
-            'status' => 'true',
-            'projects' => $projects
-        ]);
+        return Response()->json(
+            $projects,
+            200
+        );
     }
 
 
