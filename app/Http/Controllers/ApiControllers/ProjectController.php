@@ -34,7 +34,7 @@ class ProjectController extends Controller
 //  function projects() is called in api.php.
 //  Collects all Projects of an auth users group.
 //  Returns  a status and its collections formatted in json.
-
+//
 
     public function projects() {
 
@@ -55,6 +55,7 @@ class ProjectController extends Controller
 //    function create() creates a new project with the request it gets through the api.php.
 //    it will also validate the given request data.
 //    If it's incorrectly formatted data it will return an error message.
+//
 
     public function create(Request $request) {
 
@@ -80,6 +81,33 @@ class ProjectController extends Controller
         ]);
     }
 
+
+//    function update() is called in api.php.
+//    update() updates a Project Model on a given id
+//    and updates with the validated table data from the request.
+//    then returns a success message and status
+    public function update($id, Request $request) {
+
+        //TODO: add validation so a user can only change stuff if the values match the auth()->user->group_id except for when he is admin
+
+        $validatedData = $request
+            ->validate([
+                'start' => 'required',
+                'end' => 'required',
+                'name' => 'min:4',
+                'group_id' => 'required']);
+
+        $project = Project::
+        find($id)
+            ->update([
+                'start' => $validatedData["start"],
+                'end' => $validatedData["end"],
+                'name' => $validatedData["name"],
+                'group_id' => $validatedData["group_id"]]);
+
+        return Response()->json("you have successfully updated your project information!", 200);
+
+    }
 
 
     public function delete($id) {

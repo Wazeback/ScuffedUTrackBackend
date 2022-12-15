@@ -32,6 +32,8 @@ class SprintController extends Controller
     }
 
 
+//TODO: add some DOC
+
     public function sprints() {
 
         //TODO: auth()->user->group_id
@@ -51,6 +53,7 @@ class SprintController extends Controller
 //    Function create() creates a new sprint with the request it gets through the api.php.
 //    It will also validate the given request data.
 //    If it's incorrectly formatted data it will return an error message.
+//
 
     public function create(Request $request) {
 
@@ -88,7 +91,7 @@ class SprintController extends Controller
                 'name' => $validatedData["name"],
                 'project_id' => $validatedData["project_id"]]);
 
-        return Response()->json("you have successfully updated your year information!", 200);
+        return Response()->json("you have successfully updated your sprint information!", 200);
 
     }
 

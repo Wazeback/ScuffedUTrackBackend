@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
 
 
 Route::get('/sprint/{id}', [SprintController::class, 'sprint']);
@@ -47,6 +44,9 @@ Route::delete('sprints/delete/{id}', [SprintController::class, 'delete']);
 Route::delete('project/delete/{id}', [ProjectController::class, 'delete']);
 Route::delete('year/delete/{id}', [YearController::class, 'delete']);
 
+
 Route::put('/year/update/{id}', [YearController::class, 'update']);
 Route::put('/sprint/update/{id}', [SprintController::class, 'update']);
+Route::put('/project/update/{id}', [ProjectController::class, 'update']);
+Route::put('group/update/{id}', [GroupController::class, 'update']);
 
