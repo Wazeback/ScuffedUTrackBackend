@@ -1,12 +1,14 @@
 <?php
+
 namespace Database\Seeders;
 
+use Faker\Generator;
 use Illuminate\Container\Container;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Generator;
 
-class IssueTableSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * The current Faker instance.
@@ -45,20 +47,12 @@ class IssueTableSeeder extends Seeder
         $number = 1;
 
         for ($i = 0; $i < 50; $i++) {
-            DB::table('issues')->insert([
-                'title' => $this->faker->word(),
-                'description' => $this->faker->paragraph(1),
-                'state' => $number,
-                'user_id' => $number,
-                'sprint_id' => $number,
-                'priority_id' => $number,
-                'subject_id' => $number,
+            DB::table('users')->insert([
+                'name' => $this->faker->word(),
+                'email' => $this->faker->email(),
+                'group_id' => $number,
                 'created_at' => $this->faker->dateTimeBetween('now', ),
                 'updated_at' => $this->faker->dateTimeBetween('now',),
-                'duedate' => $this->faker->dateTimeBetween('now', ),
-                'status_id' => $number,
-                'estimation' => '2',
-                'spenttime' => '4h',
             ]);
         }
     }

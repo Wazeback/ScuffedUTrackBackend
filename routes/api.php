@@ -25,20 +25,34 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
-Route::get('/sprint', [SprintController::class, 'sprint']);
-Route::get('/sprints', [SprintController::class, 'sprints'])
-;
-Route::get('/project', [ProjectController::class, 'project']);
+Route::get('/sprint/{id}', [SprintController::class, 'sprint']);
+Route::get('/sprints', [SprintController::class, 'sprints']);
+
+Route::get('/project/{id}', [ProjectController::class, 'project']);
 Route::get('/projects', [ProjectController::class, 'projects']);
 
-Route::get('/year', [YearController::class, 'year']);
+Route::get('/year/{id}', [YearController::class, 'year']);
 Route::get('/years', [YearController::class, 'years']);
+Route::get('/yearUsers', [YearController::class, 'yearUsers']);
 
-Route::get('/group', [GroupController::class, 'group']);
+Route::get('/group/{id}', [GroupController::class, 'group']);
 
 Route::get('/allRelationsIssues', [IssueController::class, 'allRelationsIssues']);
 
 Route::post('/sprint/create', [SprintController::class, 'create']);
 Route::post('/project/create', [ProjectController::class, 'create']);
+Route::post('/group/create', [GroupController::class, 'create']);
+Route::post('/year/create', [YearController::class, 'create']);
+
+
+Route::delete('sprints/delete/{id}', [SprintController::class, 'delete']);
+Route::delete('project/delete/{id}', [ProjectController::class, 'delete']);
+Route::delete('year/delete/{id}', [YearController::class, 'delete']);
+
+
+Route::put('/year/update/{id}', [YearController::class, 'update']);
+Route::put('/sprint/update/{id}', [SprintController::class, 'update']);
+Route::put('/project/update/{id}', [ProjectController::class, 'update']);
+Route::put('group/update/{id}', [GroupController::class, 'update']);
 
 Route::post('/issue/create', [IssueController::class, 'create']);
