@@ -21,10 +21,10 @@ class YearController extends Controller
 //    returns a status and its collection formatted in json
     public function year($id) {
 
-        $yearID = $id;
+        $yearId = $id;
 
         $year = Year::
-        where('id', $yearID)
+        where('id', $yearId)
             ->with('groups.users')
             ->get();
 
@@ -60,10 +60,10 @@ class YearController extends Controller
 //    status and its collection formatted in json
     public function yearUsers($id) {
 
-        $yearID = $id;
+        $yearId = $id;
 
         $yearUsers= User::
-        whereRelation('group', 'year_id', $yearID)
+        whereRelation('group', 'year_id', $yearId)
             ->get();
 
         return Response()->json([
